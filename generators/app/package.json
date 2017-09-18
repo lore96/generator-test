@@ -1,0 +1,14 @@
+{
+    "name": "test",
+    "version": "0.0.0",
+    "description": "r",
+    "scripts": {
+      "test": "test"
+    },
+    "keywords": [
+    ],
+    "author": "",
+    "license": "",
+    "dependencies": {
+    } 
+}
