@@ -86,6 +86,56 @@ module.exports = class extends Generator {
     writing(){
         if(this.appConfiguration){
             this.fs.copyTpl(
+                this.templatePath('.eslintignore'),
+                this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname + '/.eslintignore'),
+                this.appConfiguration
+            );
+            this.fs.copyTpl(
+                this.templatePath('.eslintsrc'),
+                this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname + '/.eslintsrc'),
+                this.appConfiguration
+            );
+            this.fs.copyTpl(
+                this.templatePath('.gitignore'),
+                this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname + '/.gitignore'),
+                this.appConfiguration
+            );
+            this.fs.copyTpl(
+                this.templatePath('.npmignore'),
+                this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname + '/.npmignore'),
+                this.appConfiguration
+            );
+            this.fs.copyTpl(
+                this.templatePath('.travis.yml'),
+                this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname + '/.travis.yml'),
+                this.appConfiguration
+            );
+            this.fs.copyTpl(
+                this.templatePath('bower.json'),
+                this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname + '/bower.json'),
+                this.appConfiguration
+            );
+            this.fs.copyTpl(
+                this.templatePath('CHANGELOG.md'),
+                this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname + '/CHANGELOG.md'),
+                this.appConfiguration
+            );
+            this.fs.copyTpl(
+                this.templatePath('CONTRIBUTE.md'),
+                this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname + '/CONTRIBUTE.md'),
+                this.appConfiguration
+            );
+            this.fs.copyTpl(
+                this.templatePath('gulpfile.js'),
+                this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname + '/gulpfile.js'),
+                this.appConfiguration
+            );
+            this.fs.copyTpl(
+                this.templatePath('karma.conf.js'),
+                this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname + '/karma.conf.js'),
+                this.appConfiguration
+            );
+            this.fs.copyTpl(
                 this.templatePath('package.json'),
                 this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname + '/package.json'),
                 this.appConfiguration

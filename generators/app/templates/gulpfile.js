@@ -45,12 +45,12 @@ gulp.task('webpack', function(){
     return gulp.src('src/main.js')
     .pipe(webpack({
         output: {
-            filename: '<%MAINFILE%>',
+            filename: '<%= mainfile %>',
             libraryTarget: 'umd',
-            library: '<%GLOBALNAME%>'
+            library: '<%= globalname %>'
         }
     }))
-    .pipe(insert.append('\n\n/* <%APPNAME%> ' + version + ' */'))
+    .pipe(insert.append('\n\n/* <%= appname %> ' + version + ' */'))
     .pipe(gulp.dest('dist/'));
 });
 
@@ -58,7 +58,7 @@ gulp.task('doc:single', function(){
     gulp.src('src/**/*.js')
     .pipe(ngdocs.process({
         html5Mode: false,
-        startPage: '/api/<%GLOBALNAME%>'
+        startPage: '/api/<%= globalname %>'
     }))
     .pipe(gulp.dest('docs/' + version));
 });

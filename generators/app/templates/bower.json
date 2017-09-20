@@ -1,13 +1,13 @@
 {
-    "name": "<%APPNAME%>",
-    "description": "<%DESCRIPTION%>",
+    "name": "<%= appname %>",
+    "description": "<%= description %>",
     "main": [
-      "<%MAINFILE%>"
+      "<%= mainfile %>"
     ],
     "moduleType": [
       "globals"
     ],
-    "license": "<%LICENSE%>",
+    "license": "<%= license %>",
     "ignore": [
       "**/*",
       "!dist/**/*",
@@ -18,15 +18,15 @@
       "!package.json"
     ],
     "keywords": [
-     "<%KEYWORDS%>"
+     "<%= keywords%>"
     ],
     "authors": [
-      { "name": "<%AUTHOR_NAME%>", "email": "<%AUTHOR_EMAIL%>" }
+      { "name": "<%= authorName %>", "email": "<%= authorEmail %>" }
     ],
     "homepage": "",
     "repository": {
       "type": "git",
-      "url": "<%GITURL%>"
+      "url": "<%= giturl %>"
     },
     "dependencies": {},
     "devDependencies": {},

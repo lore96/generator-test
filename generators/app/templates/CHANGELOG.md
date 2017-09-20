@@ -1,2 +1,2 @@
-# <%VERSION%>
+# <%= version %>
 - Starting version

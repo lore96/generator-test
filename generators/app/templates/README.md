@@ -12,13 +12,13 @@
 ```
 npm install --save <%= appname %>
 ```
-You can found the library ready for production on <i>node_modules/<%= appname %>/<%= mainfile %>.js</i>
+You can found the library ready for production on <i>node_modules/<%= appname %>/<%= mainfile %></i>
 
 ### Bower
 ```
 bower install --save <%= appname %>
 ```
-You can found the library ready for production on <i>bower_components/<%= appname %>/<%= mainfile %>.js</i>
+You can found the library ready for production on <i>bower_components/<%= appname %>/<%= mainfile %></i>
 
 ## Documentation
 
