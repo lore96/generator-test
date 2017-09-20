@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/lore96/generator-test#readme",
   "dependencies": {
+    "mkdirp": "^0.5.1",
     "yeoman-generator": "^2.0.0"
   }
 }

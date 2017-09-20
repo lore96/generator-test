@@ -1,4 +1,5 @@
 var Generator = require('yeoman-generator');
+var mkdirp = require('mkdirp');
 
 module.exports = class extends Generator {
     // The name `constructor` is important here
@@ -42,7 +43,7 @@ module.exports = class extends Generator {
             message : 'Author email'
         }, {
             type    : 'input',
-            name    : 'mainFile',
+            name    : 'mainfile',
             message : 'Main file'
         }, {
             type    : 'input',
@@ -85,6 +86,25 @@ module.exports = class extends Generator {
 
     writing(){
         if(this.appConfiguration){
+            // mkdirp --> copy empty folder
+            mkdirp.sync(this.destinationRoot() + '/' + this.appConfiguration.appname + '/dest');
+            mkdirp.sync(this.destinationRoot() + '/' + this.appConfiguration.appname + '/docs');
+
+            this.fs.copyTpl(
+                this.templatePath('examples'),
+                this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname + '/examples/'),
+                this.appConfiguration
+            );
+            this.fs.copyTpl(
+                this.templatePath('src'),
+                this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname + '/src/'),
+                this.appConfiguration
+            );
+            this.fs.copyTpl(
+                this.templatePath('test'),
+                this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname + '/test/'),
+                this.appConfiguration
+            );
             this.fs.copyTpl(
                 this.templatePath('.eslintignore'),
                 this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname + '/.eslintignore'),
