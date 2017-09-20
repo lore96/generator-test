@@ -6,13 +6,11 @@ module.exports = class extends Generator {
         // Calling the super constructor is important so our generator is correctly set up
         super(args, opts);
 
-        this.argument('appname', { type: String, required: true });
-
         this.appConfiguration = {};
 
         this.prompts = [{
             type    : 'input',
-            name    : 'name',
+            name    : 'appname',
             message : 'Name of the project'
         }, {
             type    : 'input',
@@ -51,31 +49,18 @@ module.exports = class extends Generator {
             name    : 'globalname',
             message : 'Global name (to be exported in windows)'
         }];
-
-        this.symbolMap = {
-            name: '<%APPNAME%>',
-            version: '<%VERSION%>',
-            description: '<%DESCRIPTION%>',
-            keywords: '<%KEYWORDS%>',
-            license: '<%LICENSE%>',
-            authorName: '<%AUTHOR_NAME%>',
-            authorEmail: '<%AUTHOR_EMAIL%>',
-            giturl: '<%GITURL%>',
-            mainfile: '<%MAINFILE%>',
-            globalname: '<%GLOBALNAME%>'
-        }
     }
 
     prompting(){
         return this.prompt(this.prompts).then((answers) => {
-            if(!answers.giturl || !answers.authors){
+            if(!answers.giturl || !answers.authorName || !answers.authorEmail){
                 console.log('ERROR: can not proceed. Name, Git url or authors not provided!');
                 this.appConfiguration = false;
                 return;
             }
 
-            if(!answers.name){
-                answers.name = this.options.appname;
+            if(!answers.appname){
+                answers.appname = this.options.appname;
             }
 
             if(!answers.version){
@@ -91,7 +76,7 @@ module.exports = class extends Generator {
             }
 
             if(!answers.globalname){
-                answers.globalname = answers.name
+                answers.globalname = answers.appname
             }
 
             this.appConfiguration = answers;
@@ -100,7 +85,16 @@ module.exports = class extends Generator {
 
     writing(){
         if(this.appConfiguration){
-            console.log('NOW IS TIME TO WRITE!');
+            this.fs.copyTpl(
+                this.templatePath('package.json'),
+                this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname + '/package.json'),
+                this.appConfiguration
+            );
+            this.fs.copyTpl(
+                this.templatePath('README.md'),
+                this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname + '/README.md'),
+                this.appConfiguration
+            );
         }
     }
 };

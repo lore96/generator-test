@@ -1,26 +1,26 @@
 {
-  "name": "<%APPNAME%>",
-  "version": "<%VERSION%>",
-  "description": "<%DESCRIPTION%>",
+  "name": "<%= appname %>",
+  "version": "<%= version %>",
+  "description": "<%= description %>",
   "keywords": [
-    "<%KEYWORDS%>"
+    "<%= keywords %>"
   ],
   "homepage": "",
   "bugs": {
-    "url": "<%GITURL%>/issues"
+    "url": "<%= giturl %>/issues"
   },
-  "license": "<%LICENSE%>",
+  "license": "<%= license %>",
   "contributors": [
     {
-      "name": "<%AUTHOR_NAME%>",
-      "email": "<%AUTHOR_EMAIL%>"
+      "name": "<%= authorName %>",
+      "email": "<%= authorEmail %>"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "<%GITURL%>"
+    "url": "<%= giturl %>"
   },
-  "main": "<%MAINFILE%>",
+  "main": "<%= mainfile %>",
   "scripts": {},
   "dependencies": {
   },
