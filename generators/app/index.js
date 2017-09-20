@@ -53,6 +53,7 @@ module.exports = class extends Generator {
         return this.prompt(this.prompts).then((answers) => {
             if(!answers.giturl || !answers.authors){
                 console.log('ERROR: can not proceed. Name, Git url or authors not provided!');
+                this.appConfiguration = false;
                 return;
             }
 
@@ -80,9 +81,10 @@ module.exports = class extends Generator {
         });
     }
 
-    test(){
-        this.log(this.destinationRoot());        
-        this.log(this.appConfiguration);
+    writing(){
+        if(this.appConfiguration){
+            console.log('NOW IS TIME TO WRITE!');
+        }
     }
 };
 

@@ -1,0 +1,2 @@
+# <%VERSION%>
+- Starting version
