@@ -36,8 +36,12 @@ module.exports = class extends Generator {
             message : 'Git url'
         }, {
             type    : 'input',
-            name    : 'authors',
-            message : 'Author'
+            name    : 'authorName',
+            message : 'Author name'
+        }, {
+            type    : 'input',
+            name    : 'authorEmail',
+            message : 'Author email'
         }, {
             type    : 'input',
             name    : 'mainFile',
@@ -47,6 +51,19 @@ module.exports = class extends Generator {
             name    : 'globalname',
             message : 'Global name (to be exported in windows)'
         }];
+
+        this.symbolMap = {
+            name: '<%APPNAME%>',
+            version: '<%VERSION%>',
+            description: '<%DESCRIPTION%>',
+            keywords: '<%KEYWORDS%>',
+            license: '<%LICENSE%>',
+            authorName: '<%AUTHOR_NAME%>',
+            authorEmail: '<%AUTHOR_EMAIL%>',
+            giturl: '<%GITURL%>',
+            mainfile: '<%MAINFILE%>',
+            globalname: '<%GLOBALNAME%>'
+        }
     }
 
     prompting(){
@@ -70,7 +87,7 @@ module.exports = class extends Generator {
             }
 
             if(!answers.mainfile){
-                answers.mainfile = 'main.js'
+                answers.mainfile = 'dist/main.js'
             }
 
             if(!answers.globalname){
