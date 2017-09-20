@@ -45,12 +45,12 @@ gulp.task('webpack', function(){
     return gulp.src('src/main.js')
     .pipe(webpack({
         output: {
-            filename: 'newton-adapter-2.js',
+            filename: '<%MAINFILE%>',
             libraryTarget: 'umd',
-            library: 'NewtonAdapter'
+            library: '<%GLOBALNAME%>'
         }
     }))
-    .pipe(insert.append('\n\n/* Newton Adapter ' + version + ' */'))
+    .pipe(insert.append('\n\n/* <%APPNAME%> ' + version + ' */'))
     .pipe(gulp.dest('dist/'));
 });
 
@@ -58,7 +58,7 @@ gulp.task('doc:single', function(){
     gulp.src('src/**/*.js')
     .pipe(ngdocs.process({
         html5Mode: false,
-        startPage: '/api/NewtonAdapter'
+        startPage: '/api/<%GLOBALNAME%>'
     }))
     .pipe(gulp.dest('docs/' + version));
 });
