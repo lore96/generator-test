@@ -1,33 +1,28 @@
 {
-  "name": "newton-adapter",
-  "version": "2.6.1",
-  "description": "A light adapter for Newton library, for tracking and authentication",
+  "name": "<%APPNAME%>",
+  "version": "<%VERSION%>",
+  "description": "<%DESCRIPTION%>",
   "keywords": [
-    "newton",
-    "tracking",
-    "authentication",
-    "push"
+    "<%KEYWORDS%>"
   ],
-  "homepage": "https://github.com/D-Mobilelab/newton-adapter",
+  "homepage": "",
   "bugs": {
-    "url": "https://github.com/D-Mobilelab/newton-adapter/issues"
+    "url": "<%GITURL%>/issues"
   },
-  "license": "MIT",
+  "license": "<%LICENSE%>",
   "contributors": [
     {
-      "name": "Aurelio Merenda",
-      "email": "aurelio.merenda@docomodigital.com"
+      "name": "<%AUTHOR_NAME%>",
+      "email": "<%AUTHOR_EMAIL%>"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/D-Mobilelab/newton-adapter.git"
+    "url": "<%GITURL%>"
   },
-  "main": "dist/newton-adapter-2.js",
+  "main": "<%MAINFILE%>",
   "scripts": {},
   "dependencies": {
-    "bluebus": "^1.1.0",
-    "promise-polyfill": "^6.0.2"
   },
   "devDependencies": {
     "browser-sync": "^2.18.12",
