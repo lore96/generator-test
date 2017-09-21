@@ -16,11 +16,13 @@ module.exports = class extends Generator {
         }, {
             type    : 'input',
             name    : 'version',
-            message : 'Version of the project'
+            message : 'Version of the project',
+            default: '0.1.0'
         }, {
             type    : 'input',
             name    : 'description',
-            message : 'Description of the project'
+            message : 'Description of the project',
+            default: ''
         }, {
             type    : 'input',
             name    : 'keywords',
@@ -28,7 +30,8 @@ module.exports = class extends Generator {
         }, {
             type    : 'input',
             name    : 'license',
-            message : 'License'
+            message : 'License',
+            default: 'MIT'
         }, {
             type    : 'input',
             name    : 'giturl',
@@ -40,11 +43,12 @@ module.exports = class extends Generator {
         }, {
             type    : 'input',
             name    : 'authorEmail',
-            message : 'Author email'
+            message : 'Author email',
         }, {
             type    : 'input',
             name    : 'mainfile',
-            message : 'Main file'
+            message : 'Main file',
+            default : 'dist/main.js'
         }, {
             type    : 'input',
             name    : 'globalname',
@@ -62,18 +66,6 @@ module.exports = class extends Generator {
 
             if(!answers.appname){
                 answers.appname = this.options.appname;
-            }
-
-            if(!answers.version){
-                answers.version = '0.1.0';
-            }
-
-            if(!answers.license){
-                answers.license = 'MIT';
-            }
-
-            if(!answers.mainfile){
-                answers.mainfile = 'dist/main.js'
             }
 
             if(!answers.globalname){
