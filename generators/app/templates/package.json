@@ -10,8 +10,8 @@
   "license": "<%= license %>",
   "contributors": [
     {
-      "name": "<%= authorName %>",
-      "email": "<%= authorEmail %>"
+      "name": "<%= author.name %>",
+      "email": "<%= author.email %>"
     }
   ],
   "repository": {

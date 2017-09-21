@@ -20,8 +20,10 @@
     "keywords": [
      <%- keywords%>
     ],
-    "authors": [
-      { "name": "<%= authorName %>", "email": "<%= authorEmail %>" }
+    "authors": [{
+        "name": "<%= author.name %>", 
+        "email": "<%= author.email %>" 
+      }
     ],
     "homepage": "",
     "repository": {

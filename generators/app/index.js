@@ -9,6 +9,54 @@ module.exports = class extends Generator {
 
         this.appConfiguration = {};
 
+        this.authorsArray = [{
+                value: 'loris',
+                name: 'Lorenzo Mussi',
+                email: 'lorenzo.mussi@docomodigital.com',
+                checked: false
+            }, {
+                value: 'aurelio',
+                name: 'Aurelio Merenda',
+                email: 'aurelio.merenda@docomodigital.com',
+                checked: false
+            }, {
+                value: 'jenny',
+                name: 'Jenny Cipolli',
+                email: 'jenny.cipolli@docomodigital.com',
+                checked: false
+            }, {
+                value: 'flavia',
+                name: 'Flavia Calzecchi Onesti',
+                email: 'flavia.calzecchi@docomodigital.com',
+                checked: false
+            }, {
+                value: 'pasquale',
+                name: 'Pasquale Mangialavori',
+                email: 'pasquale.mangialavori@docomodigital.com',
+                checked: false
+            }, {
+                value: 'mirco',
+                name: 'Mirco Cipriani',
+                email: 'mirco.cipriani@docomodigital.com',
+                checked: false
+            }, {
+                value: 'luca',
+                name: 'Luca Orlandini',
+                email: 'luca.orlandini@docomodigital.com',
+                checked: false
+            }, {
+                value: 'gionatan',
+                name: 'Gionatan Quintini',
+                email: 'gionatan.quintini@docomodigital.com',
+                checked: false
+            }, {
+                value: 'nicola',
+                name: 'Nicola Garruccio',
+                email: 'nicola.garruccio@docomodigital.com',
+                checked: false
+            }
+        ];
+
         this.prompts = [{
             type    : 'input',
             name    : 'appname',
@@ -38,14 +86,6 @@ module.exports = class extends Generator {
             message : 'Git url'
         }, {
             type    : 'input',
-            name    : 'authorName',
-            message : 'Author name'
-        }, {
-            type    : 'input',
-            name    : 'authorEmail',
-            message : 'Author email',
-        }, {
-            type    : 'input',
             name    : 'mainfile',
             message : 'Main file',
             default : 'dist/main.js'
@@ -53,13 +93,40 @@ module.exports = class extends Generator {
             type    : 'input',
             name    : 'globalname',
             message : 'Global name (to be exported in windows)'
+        }, {
+            type: 'checkbox',
+            name: 'author',
+            message: 'Tell me who you are (use space bar to select):',
+            choices: this.authorsArray
         }];
     }
 
     prompting(){
         return this.prompt(this.prompts).then((answers) => {
-            if(!answers.giturl || !answers.authorName || !answers.authorEmail){
-                console.log('ERROR: can not proceed. Name, Git url or authors not provided!');
+            var authors = [];
+
+            var getAuthor = function (author, authorsArray) { 
+                for(var index in authorsArray){
+                    if(authorsArray[index].value === author){
+                        return authorsArray[index];
+                    }
+                }
+
+                return false;
+            };
+
+            for(var index in answers.author){
+                var found = getAuthor(answers.author[index], this.authorsArray);
+                if(found){
+                    authors.push(found);
+                }
+            }
+
+            this.log(authors);
+
+
+            if(!answers.giturl || authors.length <= 0){
+                console.log('ERROR: can not proceed. You have to provide a git url or authors.');
                 this.appConfiguration = false;
                 return;
             }
