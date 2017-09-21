@@ -80,6 +80,15 @@ module.exports = class extends Generator {
                 answers.globalname = answers.appname
             }
 
+            if(answers.keywords){
+                while(answers.keywords.indexOf(' ') >= 0){
+                    answers.keywords = answers.keywords.replace(' ', '');
+                }
+                if(answers.keywords.indexOf(',') >= 0){
+                    answers.keywords = answers.keywords.split(',');                    
+                }
+            }
+
             this.appConfiguration = answers;
         });
     }
@@ -87,7 +96,7 @@ module.exports = class extends Generator {
     writing(){
         if(this.appConfiguration){
             // mkdirp --> copy empty folder
-            mkdirp.sync(this.destinationRoot() + '/' + this.appConfiguration.appname + '/dest');
+            mkdirp.sync(this.destinationRoot() + '/' + this.appConfiguration.appname + '/dist');
             mkdirp.sync(this.destinationRoot() + '/' + this.appConfiguration.appname + '/docs');
 
             this.fs.copyTpl(
