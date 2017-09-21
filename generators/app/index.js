@@ -17,12 +17,12 @@ module.exports = class extends Generator {
             type    : 'input',
             name    : 'version',
             message : 'Version of the project',
-            default: '0.1.0'
+            default : '0.1.0'
         }, {
             type    : 'input',
             name    : 'description',
             message : 'Description of the project',
-            default: ''
+            default : ''
         }, {
             type    : 'input',
             name    : 'keywords',
@@ -31,7 +31,7 @@ module.exports = class extends Generator {
             type    : 'input',
             name    : 'license',
             message : 'License',
-            default: 'MIT'
+            default : 'MIT'
         }, {
             type    : 'input',
             name    : 'giturl',
