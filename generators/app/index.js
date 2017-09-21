@@ -88,8 +88,9 @@ module.exports = class extends Generator {
                     answers.keywords = answers.keywords.split(',');                    
                 }
             }
-
+            
             this.appConfiguration = answers;
+            this.log(this.appConfiguration);
         });
     }
 
