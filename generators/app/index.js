@@ -105,7 +105,7 @@ module.exports = class extends Generator {
             mkdirp.sync(this.destinationRoot() + '/' + this.appConfiguration.appname + '/dist');
             mkdirp.sync(this.destinationRoot() + '/' + this.appConfiguration.appname + '/docs');
 
-            this.fs.copyTpl(
+            /*this.fs.copyTpl(
                 this.templatePath('examples'),
                 this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname + '/examples/'),
                 this.appConfiguration
@@ -178,6 +178,12 @@ module.exports = class extends Generator {
             this.fs.copyTpl(
                 this.templatePath('README.md'),
                 this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname + '/README.md'),
+                this.appConfiguration
+            ); */
+
+            this.fs.copyTpl(
+                this.templatePath(''),
+                this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname),
                 this.appConfiguration
             );
         }
