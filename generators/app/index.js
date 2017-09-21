@@ -86,12 +86,13 @@ module.exports = class extends Generator {
                 }
 
                 if(answers.keywords.indexOf(',') >= 0){
-                    answers.keywords = answers.keywords.split(',');                    
+                    answers.keywords = answers.keywords.split(','); 
+                    answers.keywords = answers.keywords.map(function(key){
+                        return '"' + key + '"';
+                    });             
+                } else {
+                    answers.keywords = '"' + answers.keywords + '"';
                 }
-
-                answers.keywords = answers.keywords.map(function(key){
-                    return '"' + key + '"';
-                })
             }
             
             this.appConfiguration = answers;
@@ -100,16 +101,19 @@ module.exports = class extends Generator {
     }
 
     writing(){
+        var copy = function (dest) {
+            this.fs.copyTpl(
+                this.templatePath(''),
+                this.destinationPath(dest),
+                this.appConfiguration
+            );
+        }.bind(this);
+
         if(this.appConfiguration){
             // mkdirp --> copy empty folder
             mkdirp.sync(this.destinationRoot() + '/' + this.appConfiguration.appname + '/dist');
             mkdirp.sync(this.destinationRoot() + '/' + this.appConfiguration.appname + '/docs');
-
-            this.fs.copyTpl(
-                this.templatePath(''),
-                this.destinationPath(this.destinationRoot() + '/' + this.appConfiguration.appname),
-                this.appConfiguration
-            );
+            copy(this.destinationRoot() + '/' + this.appConfiguration.appname);
         }
     }
 };

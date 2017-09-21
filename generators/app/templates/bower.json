@@ -18,7 +18,7 @@
       "!package.json"
     ],
     "keywords": [
-     "<%= keywords%>"
+     <%- keywords%>
     ],
     "authors": [
       { "name": "<%= authorName %>", "email": "<%= authorEmail %>" }
