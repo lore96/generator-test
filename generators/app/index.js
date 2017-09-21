@@ -24,7 +24,7 @@ module.exports = class extends Generator {
         }, {
             type    : 'input',
             name    : 'keywords',
-            message : 'Keywords'
+            message : 'Keywords (separated by comma)'
         }, {
             type    : 'input',
             name    : 'license',
