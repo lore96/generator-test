@@ -84,9 +84,14 @@ module.exports = class extends Generator {
                 while(answers.keywords.indexOf(' ') >= 0){
                     answers.keywords = answers.keywords.replace(' ', '');
                 }
+
                 if(answers.keywords.indexOf(',') >= 0){
                     answers.keywords = answers.keywords.split(',');                    
                 }
+
+                answers.keywords = answers.keywords.map(function(key){
+                    return '"' + key + '"';
+                })
             }
             
             this.appConfiguration = answers;

@@ -2,7 +2,7 @@
   "name": "<%= appname %>",
   "version": "<%= version %>",
   "description": "<%= description %>",
-  "keywords": "<%= keywords %>",
+  "keywords": [<%- keywords %>],
   "homepage": "",
   "bugs": {
     "url": "<%= giturl %>/issues"
